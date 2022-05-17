@@ -7,16 +7,8 @@ const glob = require('glob');
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const pathsToClean = [
- 'dist'
-];
-const cleanOptions = {
- root: __dirname,
- verbose: true,
- dry: false,
- exclude: [],
-};
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 
 
 
@@ -110,6 +102,13 @@ module.exports = {
             CONSTANT_VALUE: JSON.stringify(process.env.CONSTANT_VALUE),
         }),
         new MiniCssExtractPlugin(),
+        new CleanWebpackPlugin({
+            dry: false,
+            verbose: true,
+            cleanStaleWebpackAssets: true,
+            cleanAfterEveryBuildPatterns: ['dist'],
+        }),
+
         // new PurifyCSSPlugin({
         //     paths: glob.sync(__dirname + '/*.html'),
         //     minimize: true,
