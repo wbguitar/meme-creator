@@ -43,3 +43,7 @@ body {
 .download-button {
     margin-top: 10px;
 }
+
+.has-error {
+    border: solid 1pt red;
+}
